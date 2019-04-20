@@ -30,8 +30,6 @@ durataGiornata= diff01 + diff02
 
 #diffDurataTeorica = diffTimeInterval(str_inStart=str_DurataTeorica, str_inEnd= str(durataGiornata))
 
-
-
 print('Numero ore Mattina   :',diff01)
 print('Numero ore Poneriggio:',diff02)
 print('Durata giornata      :',durataGiornata)
@@ -39,18 +37,21 @@ print('Durata pausa Pranzo  :',diffPranzo)
 #print('Diffrenza teorica    :',diffDurataTeorica)
 
 
+str_durataGiornata=str(durataGiornata)
+lst_durataGiornata=str_durataGiornata.split(':')
+
+ore   = int(lst_durataGiornata[0])
+minuti= int(lst_durataGiornata[1])
+
+if ore > 7:
+    diffTeorica=dt.timedelta( minutes=minuti ,hours= ore)- dt.timedelta(minutes=12,hours=7)
+else:
+    diffTeorica = dt.timedelta(minutes=12, hours=7) - dt.timedelta(minutes=minuti, hours=ore)
+    print('Differenza teorica   :', '-'+str(diffTeorica))
 
 
 print('---------=======----------------')
 
-dt_ora01 = dt.datetime.strptime(str_entr01, '%H:%M:%S')
-dt_ora02 = dt_ora01 + dt.timedelta(minutes=5)
-
-print(str(dt_ora01)[10:])
-print(str(dt_ora02)[10:])
-
-dt_intervallo = dt.timedelta( minutes=12 , hours= 5) + dt.timedelta(minutes=5,hours=2)
-print(dt_intervallo)
 
 
 print('Finito')
