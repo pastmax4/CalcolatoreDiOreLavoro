@@ -21,7 +21,7 @@ str_entr01="9:10:00"
 str_usct01="12:15:00"
 
 str_entr02="13:05:00"
-str_usct02="16:30:00"
+str_usct02="18:30:00"
 
 diff01 = diffTimeInterval(str_inStart=str_entr01,str_inEnd=str_usct01 )
 diff02 = diffTimeInterval(str_inStart=str_entr02,str_inEnd=str_usct02 )
@@ -42,9 +42,11 @@ lst_durataGiornata=str_durataGiornata.split(':')
 
 ore   = int(lst_durataGiornata[0])
 minuti= int(lst_durataGiornata[1])
+print(ore)
 
 if ore > 7:
     diffTeorica=dt.timedelta( minutes=minuti ,hours= ore)- dt.timedelta(minutes=12,hours=7)
+    print('Differenza teorica   :', '+'+str(diffTeorica))
 else:
     diffTeorica = dt.timedelta(minutes=12, hours=7) - dt.timedelta(minutes=minuti, hours=ore)
     print('Differenza teorica   :', '-'+str(diffTeorica))
@@ -55,5 +57,3 @@ print('---------=======----------------')
 
 
 print('Finito')
-
-
